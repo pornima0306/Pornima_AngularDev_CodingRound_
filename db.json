@@ -1,13 +1,6 @@
 {
   "productList": [
     {
-      "id": 1,
-      "name": "AAAAAAAAA",
-      "price": 749,
-      "quantity": 2,
-      "category": "Appliances"
-    },
-    {
       "id": 3,
       "name": "Electric Grill",
       "price": 1898,
@@ -76,6 +69,13 @@
       "price": 119,
       "quantity": 1,
       "category": "Essentials"
+    },
+    {
+      "name": "Iphone",
+      "category": "BBBBBBBBB",
+      "price": "8300000",
+      "quantity": "5",
+      "id": 13
     }
   ]
 }

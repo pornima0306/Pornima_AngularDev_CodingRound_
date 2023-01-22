@@ -1,43 +1,37 @@
 <div class="container">
     <div class="row">
-        <ng-container *ngFor="let Prod of allProductArr">
+       
+        <ng-container *ngFor="let Prod of allProductArr | filter :  serchStringValue" >
             <div class="col-sm-4" >
             
                 <div class="card mt-4">
-                    <div class="card-header"
-                    [ngClass]="{'bg-success' : Prod.category ==='Appliances', 'bg-danger' : Prod.category==='Healthy Food', 'bg-warning' : Prod.category==='Essentials'}">
-                    <h5>{{Prod.name}}</h5>
+                    <div class="card-header bg-dark">
+                    <h5 class="text-white">{{Prod.name}}</h5>
                     </div>
-                    <div class="card-body"
-                    [ngClass]="{'alert-success' : Prod.category ==='Appliances', 'alert-danger' : Prod.category==='Healthy Food', 'alert-warning' : Prod.category==='Essentials'}">
+                    <div class="card-body">
                         <p><strong>Product Category : </strong>{{Prod.category}}</p>
                         <p><strong>Product Price : </strong>{{Prod.price}}</p>
                         <p><strong>Product Quantity : </strong>{{Prod.quantity}}</p>
                     </div>
-                    <div class="card-footer"
-                    [ngClass]="{'alert-success' : Prod.category ==='Appliances', 'alert-danger' : Prod.category==='Healthy Food', 'alert-warning' : Prod.category==='Essentials'}">
-                        <button class="btn"
-                        [ngClass]="{'btn-outline-success' : Prod.category ==='Appliances', 'btn-outline-danger' : Prod.category==='Healthy Food', 'btn-outline-warning' : Prod.category==='Essentials'}"
+                    <div class="card-footer">
+                        <button class="btn btn-outline-dark"
                          (click)="OnAddCartClick(Prod.id)" *ngIf="getUserRole === 'User'"
                         >Add to Cart</button>
                         
-                        <button class="btn btn-outline-success mr-2" 
+                        <button class="btn btn-outline-dark mr-2" 
                         *ngIf="getUserRole === 'Admin'"
                         (click)="onEditClick(Prod.id)" 
                         [routerLink]="['/productform',Prod.id]"><i class="fas fa-edit mr-2"></i>Edit</button>
-                        
-                        <button class="btn btn-outline-danger" 
+
+                        <button class="btn btn-outline-dark" 
                         *ngIf="getUserRole === 'Admin'"
                         (click)="onDeleteClick(Prod.id)"><i class="fas fa-trash-alt mr-2"></i>Delete</button>
-
-
-                        
                     </div>
                 </div>
-                
-            
         </div>
         </ng-container>
-        
+        <div class="col-sm-12 text-danger">
+            <p>{{error}}</p>
+        </div>
     </div>
 </div>

@@ -19,8 +19,8 @@
                     <label for="quantity">Quantity</label>
                     <input type="text" class="form-control" id="quantity" formControlName="quantity">
                   </div>
-                <button type="submit" class="btn btn-primary"  *ngIf="!canEdit">Submit</button>
-                <button type="submit" class="btn btn-primary" *ngIf="canEdit" routerLink="/" (click)="onUpdateProduct()">Update</button>
+                <button type="submit" class="btn btn-primary"  *ngIf="!canEdit" >Submit</button>
+                <button type="button" class="btn btn-primary" *ngIf="canEdit"  (click)="onUpdateProduct()">Update</button>
               </form>
         </div>
     </div>

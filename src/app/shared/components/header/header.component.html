@@ -3,10 +3,10 @@
         <div class="navbar-brand align-item-center d-flex">
             <i style="font-size : 30px" class=" fas fa-shipping-fast text-light"></i>
             <strong class="text-light ml-3"> Shopping website</strong>
-            <!-- <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search Products">
+            <div class="form-group">
+                <input type="text"  (input)="onserch($event)" class="form-control" placeholder="Search Products">
             </div>
-            <span class="fas fa-search search-icon"></span> -->
+            <span class="fas fa-search search-icon"></span>
         </div>
         <button class="btn btn-dark" routerLink="/dashboard">Home</button>
         <button class="btn btn-dark" routerLink="/login">Login</button>

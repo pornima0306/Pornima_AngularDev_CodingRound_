@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Product } from '../../model/product';
 import { ProductsService } from '../../services/products.service';
 
@@ -15,9 +15,11 @@ export class ProductFormComponent implements OnInit {
   canEdit :boolean=false;
   constructor(private fb : FormBuilder,
     private route : ActivatedRoute,
-    private productService : ProductsService) { }
+    private productService : ProductsService,
+    private router : Router) { }
 
   ngOnInit(): void {
+    this.onCreateProduct()
 
     this.route.params
         .subscribe((params : Params) =>{
@@ -26,7 +28,7 @@ export class ProductFormComponent implements OnInit {
           if(getId){
             this.canEdit = true;
           }
-          localStorage.setItem('postId', getId)
+          localStorage.setItem('postId','' + getId)
           this.productService.editProduct(getId)
               .subscribe(res =>{
                 console.log(res);
@@ -40,16 +42,22 @@ export class ProductFormComponent implements OnInit {
               })
         })
         /* this.onFormSubmit() */
-        this.onAddProduct()
+        
         
   }
+
   onFormSubmit(){
-    console.log(this.ProductForm.value.id)
+    /* console.log(this.ProductForm.value.id) */
+    this.productService.addProduct(this.ProductForm.value).subscribe((res)=>{
+      console.log(res)
+      this.ProdArray.push(res)
+    })
+    this.router.navigate(['/admincard'])
+    console.log(this.ProdArray)
   }
 
-  onAddProduct(){
+  onCreateProduct(){
     this.ProductForm = this.fb.group({
-      id: ['',[ Validators.required]], 
       name : ['',[ Validators.required]], 
       category: ['',[ Validators.required]],
       price: ['',[ Validators.required]],
@@ -65,15 +73,16 @@ export class ProductFormComponent implements OnInit {
     this.productService.UpdateProduct(id, this.ProductForm.value)
                       .subscribe(res =>{
                         console.log(res);
-                        /* this.ProdArray.push(res);
-                        console.log(this.ProdArray); */
-                        this.ProdArray.forEach(prod=>{
+                        this.ProdArray.push(res);
+                        console.log(this.ProdArray);
+                        /* this.ProdArray.forEach(prod=>{
                           if(prod.id === id){
                             prod = Object.assign({},res)
                           }
-                        })
+                        }) */
                         this.ProductForm.reset()
                       })
+                      this.router.navigate(['/admincard'])
   }
   get f(){
     return this.ProductForm.controls

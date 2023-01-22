@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, retry, Subject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../model/product';
 
@@ -11,11 +11,26 @@ export class ProductsService {
 productUrl : string = `${environment.productUrl}`
 countSub : Subject<number> = new Subject();
 ProdObj : Subject<Product> = new Subject();
+searchValue : Subject<string> = new Subject();
 
-  constructor(private http : HttpClient) { }
+
+constructor(private http : HttpClient) { }
 
 getAllProduct():Observable<Product[]>{
   return this.http.get<Product[]>(this.productUrl)
+  .pipe(retry(1), catchError(this.handleError));
+}
+handleError(error :any){
+  let errMsg = '';
+  if(error.error instanceof ErrorEvent){
+    errMsg = `Error : ${error.error.message}`
+  }else{
+    errMsg = `Error code : ${error.status}\nMessage : ${error.message}`;
+  }
+  console.log(errMsg);
+  return throwError(()=>{
+    return errMsg;
+  })
 }
 
 deleteProduct(id:number):Observable<Product>{
