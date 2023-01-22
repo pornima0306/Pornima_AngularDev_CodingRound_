@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let Prod of cartArray">
+            <div class="col-sm-4" >
+            
+                <div class="card mt-4">
+                    <div class="card-header">
+                    <h3>{{Prod.name}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Product Category : </strong>{{Prod.category}}</p>
+                        <p><strong>Product Price : </strong>{{Prod.price}}</p>
+                        <p><strong>Product Quantity : </strong>{{Prod.quantity}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary" (click)="OnRemoveCartClick()">Remove from Cart</button>
+                        
+                        
+                    </div>
+                </div>
+                
+            
+        </div>
+        </ng-container>
+        
+    </div>
+</div>

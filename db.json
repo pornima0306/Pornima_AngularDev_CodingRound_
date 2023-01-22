@@ -1,0 +1,81 @@
+{
+  "productList": [
+    {
+      "id": 1,
+      "name": "AAAAAAAAA",
+      "price": 749,
+      "quantity": 2,
+      "category": "Appliances"
+    },
+    {
+      "id": 3,
+      "name": "Electric Grill",
+      "price": 1898,
+      "quantity": 2,
+      "category": "Appliances"
+    },
+    {
+      "id": 4,
+      "name": "Water Heater",
+      "price": 596,
+      "quantity": 4,
+      "category": "Appliances"
+    },
+    {
+      "id": 5,
+      "name": "Multigrain Energy Bars",
+      "price": 400,
+      "quantity": 2,
+      "category": "Healthy Food"
+    },
+    {
+      "id": 6,
+      "name": "Mixed Nuts",
+      "price": 424,
+      "quantity": 3,
+      "category": "Healthy Food"
+    },
+    {
+      "id": 7,
+      "name": "Breakfast Protein variety",
+      "price": 290,
+      "quantity": 5,
+      "category": "Healthy Food"
+    },
+    {
+      "id": 8,
+      "name": "Flavored Melts",
+      "price": 280,
+      "quantity": 3,
+      "category": "Healthy Food"
+    },
+    {
+      "id": 9,
+      "name": "Hand Sanitizer",
+      "price": 100,
+      "quantity": 2,
+      "category": "Essentials"
+    },
+    {
+      "id": 10,
+      "name": "Face Mask",
+      "price": 40,
+      "quantity": 4,
+      "category": "Essentials"
+    },
+    {
+      "id": 11,
+      "name": "Hand Wash",
+      "price": 75,
+      "quantity": 2,
+      "category": "Essentials"
+    },
+    {
+      "id": 12,
+      "name": "Disinfectant Liquid",
+      "price": 119,
+      "quantity": 1,
+      "category": "Essentials"
+    }
+  ]
+}
